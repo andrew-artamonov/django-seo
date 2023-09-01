@@ -6,7 +6,7 @@ from django.contrib.contenttypes.admin import GenericStackedInline
 from django.contrib.contenttypes.models import ContentType
 from django.utils.encoding import smart_str
 from django.forms.models import fields_for_model
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.utils.text import capfirst
 
 from djangoseo.utils import get_seo_content_types
@@ -289,7 +289,7 @@ def _monkey_inline(model, admin_class_instance, metadata_class, inline_class, ad
     if model in metadata_class._meta.seo_models:
         # *Not* adding to the class attribute "inlines", as this will affect
         # all instances from this class. Explicitly adding to instance attribute.
-        admin_class_instance.__dict__['inlines'] = admin_class_instance.inlines + [inline_class]
+        admin_class_instance.__dict__['inlines'] = list(admin_class_instance.inlines) + [inline_class]
 
         # Because we've missed the registration, we need to perform actions
         # that were done then (on admin class instantiation)

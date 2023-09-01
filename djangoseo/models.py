@@ -4,7 +4,7 @@ import importlib
 
 from django.db import models
 from django.conf import settings
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.contrib import admin
 
 from .utils import create_dynamic_model, register_model_in_admin
