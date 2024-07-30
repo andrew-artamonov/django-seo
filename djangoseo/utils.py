@@ -50,7 +50,7 @@ def _pattern_resolve_to_name(pattern, path):
             name = pattern.name
         elif hasattr(pattern, '_callback_str'):
             name = pattern._callback_str
-        else:
+        elif pattern.callback:
             name = "%s.%s" % (pattern.callback.__module__, pattern.callback.func_name)
         return name
 
